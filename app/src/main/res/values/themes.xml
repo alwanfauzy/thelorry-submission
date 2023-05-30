@@ -1,16 +1,75 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.TheLorryResto" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <style name="Theme.TheLorryResto" parent="Theme.MaterialComponents.Light.DarkActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_500</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryVariant">@color/primary</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
         <item name="colorSecondaryVariant">@color/teal_700</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <item name="android:statusBarColor">@color/white</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <!--  Text Title Theme  -->
+    <style name="TextTitle">
+        <item name="android:textSize">@dimen/font_21sp</item>
+        <item name="android:fontFamily">@font/montserrat_regular</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+    <style name="TextTitle.Bold">
+        <item name="android:fontFamily">@font/montserrat_bold</item>
+    </style>
+    <style name="TextTitle.Bold.GrayDarker">
+        <item name="android:textColor">@color/gray_darker</item>
+    </style>
+
+    <!--  Text Large Theme  -->
+    <style name="TextLarge">
+        <item name="android:textSize">@dimen/font_18sp</item>
+        <item name="android:fontFamily">@font/montserrat_regular</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+     <style name="TextLarge.White">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <!--  Text Body1 Theme  -->
+    <style name="TextBody1">
+        <item name="android:textSize">@dimen/font_16sp</item>
+        <item name="android:fontFamily">@font/montserrat_regular</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+    <style name="TextBody1.Primary">
+        <item name="android:textColor">@color/primary</item>
+    </style>
+    <style name="TextBody1.Bold">
+        <item name="android:fontFamily">@font/montserrat_bold</item>
+    </style>
+    <style name="TextBody1.Bold.Yellow">
+        <item name="android:textColor">@color/yellow</item>
+    </style>
+
+    <!--  Text Body2 Theme  -->
+    <style name="TextBody2">
+        <item name="android:textSize">@dimen/font_14sp</item>
+        <item name="android:fontFamily">@font/montserrat_regular</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+    <style name="TextBody2.Gray">
+        <item name="android:textColor">@color/gray</item>
+    </style>
+    <style name="TextBody2.Primary">
+        <item name="android:textColor">@color/primary</item>
+    </style>
+    <style name="TextBody2.Bold">
+        <item name="android:fontFamily">@font/montserrat_bold</item>
+    </style>
+    <style name="TextBody2.Bold.Primary">
+        <item name="android:textColor">@color/primary</item>
+    </style>
+
 </resources>
