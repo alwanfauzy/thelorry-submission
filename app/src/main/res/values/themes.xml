@@ -29,6 +29,9 @@
     <style name="TextTitle.Bold.GrayDarker">
         <item name="android:textColor">@color/gray_darker</item>
     </style>
+    <style name="TextTitle.Bold.Primary">
+        <item name="android:textColor">@color/primary</item>
+    </style>
 
     <!--  Text Large Theme  -->
     <style name="TextLarge">

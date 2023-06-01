@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="@dimen/spacing_4dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/spacing_110dp"
+        android:background="?attr/selectableItemBackground">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivRestaurant"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@color/primary" />
+
+        <TextView
+            android:id="@+id/tvRestaurant"
+            style="@style/TextLarge.White"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="@string/restaurants" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivChevron"
+            android:layout_width="@dimen/spacing_24dp"
+            android:layout_height="@dimen/spacing_24dp"
+            android:layout_marginEnd="@dimen/spacing_24dp"
+            android:src="@drawable/ic_chevron_right"
+            app:layout_constraintBottom_toBottomOf="@id/tvRestaurant"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tvRestaurant" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

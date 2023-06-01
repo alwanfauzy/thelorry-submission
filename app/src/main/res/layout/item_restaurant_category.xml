@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/sh_rounded_6_primary">
+
+    <TextView
+        android:id="@+id/tvCategory"
+        style="@style/TextBody2.Bold.Primary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingHorizontal="@dimen/spacing_28dp"
+        android:paddingVertical="@dimen/spacing_16dp"
+        tools:text="Category" />
+
+</androidx.appcompat.widget.LinearLayoutCompat>
