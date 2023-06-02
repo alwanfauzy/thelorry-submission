@@ -17,4 +17,7 @@
     <dimen name="font_14sp">14sp</dimen>
     <dimen name="spacing_44dp">44dp</dimen>
     <dimen name="spacing_4dp">4dp</dimen>
+    <dimen name="spacing_14dp">14dp</dimen>
+    <dimen name="spacing_36dp">36dp</dimen>
+    <dimen name="spacing_40dp">40dp</dimen>
 </resources>

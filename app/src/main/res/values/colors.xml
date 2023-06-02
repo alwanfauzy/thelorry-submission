@@ -5,6 +5,7 @@
     <color name="teal_700">#FF018786</color>
     <color name="gray">#F8F8F8</color>
     <color name="gray_darker">#606060</color>
+    <color name="border">#E1E1E1</color>
     <color name="yellow">#FFD000</color>
     <color name="background">#E5E5E5</color>
     <color name="black">#000000</color>

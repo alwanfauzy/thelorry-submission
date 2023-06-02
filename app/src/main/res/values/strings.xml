@@ -2,4 +2,11 @@
     <string name="app_name">TheLorry Resto</string>
     <string name="restaurants">Restaurants</string>
     <string name="filter">Filter</string>
+    <string name="rating">Rating:</string>
+    <string name="navigate_with_google_map">Navigate with Google Map</string>
+    <string name="description">Description</string>
+    <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus.</string>
+    <string name="comment">Comment (56)</string>
+    <string name="load_more_comments">Load more comments</string>
+    <string name="write_a_comment">Write a comment..</string>
 </resources>
