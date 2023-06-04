@@ -171,13 +171,6 @@ class DetailActivity : AppCompatActivity() {
         }
     }
 
-    override fun onResume() {
-        super.onResume()
-        hideDetailLoading()
-        hideLoadingSendComment()
-        hideCommentLoading()
-    }
-
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
