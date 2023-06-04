@@ -8,22 +8,30 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/spacing_110dp"
-        android:background="?attr/selectableItemBackground">
+        android:layout_height="@dimen/spacing_110dp">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/ivRestaurant"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:scaleType="centerCrop"
             android:src="@color/primary" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/black_a50" />
 
         <TextView
             android:id="@+id/tvRestaurant"
             style="@style/TextLarge.White"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/spacing_24dp"
+            android:layout_marginHorizontal="@dimen/spacing_24dp"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/ivChevron"
+            android:maxLines="1"
+            android:ellipsize="end"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="@string/restaurants" />
