@@ -1,4 +1,4 @@
-package com.alwan.thelorryresto.presentation.detail
+package com.alwan.thelorryresto.presentation.detail.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -24,16 +24,16 @@ class RestaurantPreviewAdapter(private val onRestaurantPreviewClicked: (String) 
     )
 
 
-    override fun onBindViewHolder(holder: RestaurantPreviewAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(getItem(position))
     }
 
     inner class ViewHolder(private val binding: ItemRestaurantPreviewBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(restaurant: String) = binding.apply {
+        fun bind(imageUrl: String) = binding.apply {
+            ivRestaurantPreview.loadImage(imageUrl)
 
-            ivRestaurantPreview.loadImage("")
-            root.setOnClickListener { onRestaurantPreviewClicked(restaurant) }
+            root.setOnClickListener { onRestaurantPreviewClicked(imageUrl) }
         }
     }
 

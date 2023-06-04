@@ -1,6 +1,6 @@
 package com.alwan.core.domain.usecase
 
-import com.alwan.core.data.remote.request.CommentRequest
+import com.alwan.core.data.remote.request.SendCommentRequest
 import com.alwan.core.data.util.Resource
 import com.alwan.core.domain.model.Comment
 import com.alwan.core.domain.model.Food
@@ -15,16 +15,14 @@ class RestaurantInteractor @Inject constructor(private val restaurantRepository:
     override fun getRestaurantListByCategory(category: String): Flow<Resource<List<Food>>> =
         restaurantRepository.getRestaurantListByCategory(category)
 
-    override fun getRestaurantDetailsByID(restaurantId: String): Flow<Resource<FoodDetail>> =
+    override fun getRestaurantDetailsByID(restaurantId: Int): Flow<Resource<FoodDetail>> =
         restaurantRepository.getRestaurantDetailsByID(restaurantId)
 
     override fun getCommentsByRestaurantID(
-        restaurantId: String,
+        restaurantId: Int,
         page: Int
     ): Flow<Resource<List<Comment>>> =
         restaurantRepository.getCommentsByRestaurantID(restaurantId, page)
 
-//    override fun sendCommentToRestaurantByID(commentRequest: CommentRequest): Flow<Resource<Boolean>> {
-//        TODO("Not yet implemented")
-//    }
+    override fun sendCommentToRestaurantByID(sendCommentRequest: SendCommentRequest): Flow<Resource<String>> = restaurantRepository.sendCommentToRestaurantByID(sendCommentRequest)
 }

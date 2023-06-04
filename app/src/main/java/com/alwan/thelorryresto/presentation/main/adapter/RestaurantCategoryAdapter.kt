@@ -1,4 +1,4 @@
-package com.alwan.thelorryresto.presentation.main
+package com.alwan.thelorryresto.presentation.main.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -20,7 +20,7 @@ class RestaurantCategoryAdapter(private val onCategoriesClicked: (String) -> Uni
         )
     )
 
-    override fun onBindViewHolder(holder: RestaurantCategoryAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(getItem(position))
     }
 

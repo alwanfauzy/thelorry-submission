@@ -1,5 +1,7 @@
 package com.alwan.core.util
 
+import android.content.ClipData
+import android.content.ClipboardManager
 import android.content.Context
 import android.view.View
 import android.widget.ImageView
@@ -20,6 +22,8 @@ fun ImageView.loadImage(url: String) {
 
 fun Int?.orZero() = this ?: 0
 
+fun Float?.orZero() = this ?: 0f
+
 fun View.show() {
     this.visibility = View.VISIBLE
 }
@@ -29,3 +33,9 @@ fun View.hide() {
 }
 
 fun Context.showToast(message: String?) = Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+
+fun Context.addToClipboard(text: String?) {
+    val clipboardManager = this.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+    val clipData = ClipData.newPlainText("Text", text)
+    clipboardManager.setPrimaryClip(clipData)
+}

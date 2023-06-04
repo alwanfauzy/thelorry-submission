@@ -74,6 +74,7 @@
         android:id="@+id/pbRestaurants"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@id/rvRestaurants"
         app:layout_constraintEnd_toEndOf="@id/rvRestaurants"
         app:layout_constraintStart_toStartOf="@id/rvRestaurants"
@@ -88,10 +89,12 @@
         android:ellipsize="end"
         android:maxLines="5"
         android:textAlignment="center"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@id/rvRestaurants"
         app:layout_constraintEnd_toEndOf="@id/rvRestaurants"
         app:layout_constraintStart_toStartOf="@id/rvRestaurants"
         app:layout_constraintTop_toTopOf="@id/rvRestaurants"
         tools:text="@string/empty_data" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

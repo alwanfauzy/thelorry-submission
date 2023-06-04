@@ -3,6 +3,7 @@ package com.alwan.core.data.mapper
 import com.alwan.core.data.remote.response.CommentListResponse
 import com.alwan.core.data.remote.response.FoodDetailResponse
 import com.alwan.core.data.remote.response.FoodListResponse
+import com.alwan.core.data.remote.response.SendCommentResponse
 import com.alwan.core.domain.model.Address
 import com.alwan.core.domain.model.Comment
 import com.alwan.core.domain.model.Food
@@ -46,4 +47,7 @@ class RestaurantMapper @Inject constructor() {
             )
         }.orEmpty()
     )
+
+    fun mapSendCommentResponseToString(from: SendCommentResponse): Flow<String> =
+        flowOf(from.message.orEmpty())
 }

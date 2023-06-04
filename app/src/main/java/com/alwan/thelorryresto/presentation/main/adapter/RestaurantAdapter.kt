@@ -1,4 +1,4 @@
-package com.alwan.thelorryresto.presentation.main
+package com.alwan.thelorryresto.presentation.main.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -9,7 +9,9 @@ import com.alwan.core.domain.model.Food
 import com.alwan.core.util.loadImage
 import com.alwan.thelorryresto.databinding.ItemRestaurantBinding
 
-class RestaurantAdapter(private val onRestaurantClicked: (Food) -> Unit) :
+class RestaurantAdapter(
+    private val onRestaurantClicked: (Food, ItemRestaurantBinding) -> Unit,
+) :
     ListAdapter<Food, RestaurantAdapter.ViewHolder>(DIFF_CALLBACK) {
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -22,7 +24,7 @@ class RestaurantAdapter(private val onRestaurantClicked: (Food) -> Unit) :
         )
     )
 
-    override fun onBindViewHolder(holder: RestaurantAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(getItem(position))
     }
 
@@ -32,7 +34,7 @@ class RestaurantAdapter(private val onRestaurantClicked: (Food) -> Unit) :
             tvRestaurant.text = restaurant.title
             ivRestaurant.loadImage(restaurant.image)
 
-            root.setOnClickListener { onRestaurantClicked(restaurant) }
+            root.setOnClickListener { onRestaurantClicked(restaurant, binding) }
         }
     }
 

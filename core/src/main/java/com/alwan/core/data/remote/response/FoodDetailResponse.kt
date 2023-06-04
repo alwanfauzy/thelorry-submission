@@ -8,7 +8,7 @@ data class FoodDetailResponse(
     @SerializedName("images")
     val images: List<ImagesResponse>?,
     @SerializedName("rating")
-    val rating: Int?,
+    val rating: Float?,
     @SerializedName("address")
     val address: AddressResponse?,
     @SerializedName("description")

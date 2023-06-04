@@ -3,7 +3,7 @@ package com.alwan.core.domain.model
 data class FoodDetail(
     val title: String,
     val images: List<String>,
-    val rating: Int,
+    val rating: Float,
     val address: Address,
     val description: String,
 )

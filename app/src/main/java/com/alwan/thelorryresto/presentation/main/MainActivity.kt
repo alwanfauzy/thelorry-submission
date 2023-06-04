@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityOptionsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.alwan.core.data.util.onError
 import com.alwan.core.data.util.onLoading
@@ -14,8 +15,11 @@ import com.alwan.core.util.show
 import com.alwan.core.util.showToast
 import com.alwan.thelorryresto.R
 import com.alwan.thelorryresto.databinding.ActivityMainBinding
+import com.alwan.thelorryresto.databinding.ItemRestaurantBinding
 import com.alwan.thelorryresto.presentation.detail.DetailActivity
 import com.alwan.thelorryresto.presentation.detail.DetailActivity.Companion.EXTRA_ID
+import com.alwan.thelorryresto.presentation.main.adapter.RestaurantAdapter
+import com.alwan.thelorryresto.presentation.main.adapter.RestaurantCategoryAdapter
 import com.alwan.thelorryresto.util.HorizontalMarginItemDecoration
 import com.alwan.thelorryresto.util.VerticalMarginItemDecoration
 import dagger.hilt.android.AndroidEntryPoint
@@ -34,8 +38,8 @@ class MainActivity : AppCompatActivity() {
         "korean",
         "thai"
     )
-    private val restaurantAdapter = RestaurantAdapter {
-        handleRestaurantClicked(it)
+    private val restaurantAdapter = RestaurantAdapter { data, binding ->
+        handleRestaurantClicked(data, binding)
     }
     private val restaurantCategoryAdapter = RestaurantCategoryAdapter {
         handleRestaurantCategoryClicked(it)
@@ -102,7 +106,7 @@ class MainActivity : AppCompatActivity() {
                     showRestaurantError(getString(R.string.empty_data))
                 else
                     restaurantAdapter.submitList(it)
-            }.onError { message, data ->
+            }.onError { message, _ ->
                 hideRestaurantLoading()
                 showRestaurantError(message)
                 showToast(message)
@@ -110,11 +114,17 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun handleRestaurantClicked(restaurant: Food) {
+    private fun handleRestaurantClicked(restaurant: Food, binding: ItemRestaurantBinding) {
+        val optionsCompat: ActivityOptionsCompat =
+            ActivityOptionsCompat.makeSceneTransitionAnimation(
+                this,
+                binding.tvRestaurant,
+                "restaurantName"
+            )
         val detailIntent = Intent(this, DetailActivity::class.java).apply {
             putExtra(EXTRA_ID, restaurant.id)
         }
-        startActivity(detailIntent)
+        startActivity(detailIntent, optionsCompat.toBundle())
     }
 
     private fun handleRestaurantCategoryClicked(category: String) {

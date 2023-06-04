@@ -1,8 +1,7 @@
 package com.alwan.core.data.remote.datasource
 
-import android.util.Log
 import com.alwan.core.data.remote.apiservice.RestaurantApiService
-import com.alwan.core.data.remote.request.CommentRequest
+import com.alwan.core.data.remote.request.SendCommentRequest
 import com.alwan.core.data.remote.response.BaseResponse
 import com.alwan.core.data.remote.response.CommentListResponse
 import com.alwan.core.data.remote.response.FoodDetailResponse
@@ -21,17 +20,17 @@ class RestaurantRemoteDataSource @Inject constructor(private val restaurantApiSe
     suspend fun getRestaurantListByCategory(category: String): Flow<NetworkResult<FoodListResponse>> =
         handleApi { restaurantApiService.getRestaurantListByCategory(category) }
 
-    suspend fun getRestaurantDetailsByID(restaurantId: String): Flow<NetworkResult<FoodDetailResponse>> =
+    suspend fun getRestaurantDetailsByID(restaurantId: Int): Flow<NetworkResult<FoodDetailResponse>> =
         handleApi { restaurantApiService.getRestaurantDetailsByID(restaurantId) }
 
     suspend fun getCommentsByRestaurantID(
-        restaurantId: String,
+        restaurantId: Int,
         page: Int
     ): Flow<NetworkResult<CommentListResponse>> =
         handleApi { restaurantApiService.getCommentsByRestaurantID(restaurantId, page) }
 
-//    suspend fun sendCommentToRestaurantByID(commentRequest: CommentRequest) =
-//        handleApi { restaurantApiService.sendCommentToRestaurantByID(commentRequest) }
+    suspend fun sendCommentToRestaurantByID(sendCommentRequest: SendCommentRequest) =
+        handleApi { restaurantApiService.sendCommentToRestaurantByID(sendCommentRequest) }
 }
 
 suspend fun <T : Any> handleApi(

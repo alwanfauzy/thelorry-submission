@@ -17,6 +17,7 @@
             android:id="@+id/ivComment"
             android:layout_width="@dimen/spacing_40dp"
             android:layout_height="@dimen/spacing_40dp"
+            android:scaleType="centerCrop"
             android:src="@drawable/ic_user_outline"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

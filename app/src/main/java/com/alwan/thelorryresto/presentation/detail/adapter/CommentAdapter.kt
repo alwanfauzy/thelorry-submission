@@ -1,15 +1,16 @@
-package com.alwan.thelorryresto.presentation.detail
+package com.alwan.thelorryresto.presentation.detail.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.alwan.core.domain.model.Comment
+import com.alwan.core.util.loadImage
 import com.alwan.thelorryresto.databinding.ItemCommentBinding
-import com.alwan.thelorryresto.databinding.ItemRestaurantPreviewBinding
 
 class CommentAdapter :
-    ListAdapter<String, CommentAdapter.ViewHolder>(
+    ListAdapter<Comment, CommentAdapter.ViewHolder>(
         DIFF_CALLBACK
     ) {
 
@@ -28,26 +29,27 @@ class CommentAdapter :
 
     inner class ViewHolder(private val binding: ItemCommentBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(restaurantPreview: String) = binding.apply {
-            tvName.text = restaurantPreview
-            tvDescription.text = restaurantPreview
+        fun bind(comment: Comment) = binding.apply {
+            ivComment.loadImage(comment.profilePicture)
+            tvName.text = comment.userName
+            tvDescription.text = comment.body
         }
     }
 
     companion object {
-        private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<String>() {
+        private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<Comment>() {
             override fun areItemsTheSame(
-                oldItem: String,
-                newItem: String
+                oldItem: Comment,
+                newItem: Comment
             ): Boolean {
-                return oldItem == newItem
+                return oldItem.id == newItem.id
             }
 
             override fun areContentsTheSame(
-                oldItem: String,
-                newItem: String
+                oldItem: Comment,
+                newItem: Comment
             ): Boolean {
-                return oldItem == newItem
+                return oldItem.id == newItem.id
             }
         }
     }

@@ -1,30 +1,24 @@
 package com.alwan.core.data.remote.apiservice
 
-import com.alwan.core.data.remote.request.CommentRequest
-import com.alwan.core.data.remote.response.BaseResponse
-import com.alwan.core.data.remote.response.CommentListResponse
-import com.alwan.core.data.remote.response.FoodDetailResponse
-import com.alwan.core.data.remote.response.FoodListResponse
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.Path
+import com.alwan.core.data.remote.request.SendCommentRequest
+import com.alwan.core.data.remote.response.*
+import retrofit2.http.*
 
 interface RestaurantApiService {
     @GET("restaurants/category/{category}")
     suspend fun getRestaurantListByCategory(@Path("category") category: String): BaseResponse<FoodListResponse>
 
     @GET("restaurants/{restaurantId}")
-    suspend fun getRestaurantDetailsByID(@Path("restaurantId") restaurantId: String): BaseResponse<FoodDetailResponse>
+    suspend fun getRestaurantDetailsByID(@Path("restaurantId") restaurantId: Int): BaseResponse<FoodDetailResponse>
 
-    @GET("restaurants/{restaurantId}/comments?page={page}")
+    @GET("restaurants/{restaurantId}/comments")
     suspend fun getCommentsByRestaurantID(
-        @Path("restaurantId") restaurantId: String,
-        @Path("page") page: Int
+        @Path("restaurantId") restaurantId: Int,
+        @Query("page") page: Int
     ): BaseResponse<CommentListResponse>
 
-//    @POST("comments")
-//    suspend fun sendCommentToRestaurantByID(
-//        @Body commentRequest: CommentRequest,
-//    ): BaseResponse<Boolean>
+    @POST("comments")
+    suspend fun sendCommentToRestaurantByID(
+        @Body sendCommentRequest: SendCommentRequest,
+    ): BaseResponse<SendCommentResponse>
 }

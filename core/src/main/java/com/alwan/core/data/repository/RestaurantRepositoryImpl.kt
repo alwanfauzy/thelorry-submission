@@ -2,10 +2,11 @@ package com.alwan.core.data.repository
 
 import com.alwan.core.data.mapper.RestaurantMapper
 import com.alwan.core.data.remote.datasource.RestaurantRemoteDataSource
-import com.alwan.core.data.remote.request.CommentRequest
+import com.alwan.core.data.remote.request.SendCommentRequest
 import com.alwan.core.data.remote.response.CommentListResponse
 import com.alwan.core.data.remote.response.FoodDetailResponse
 import com.alwan.core.data.remote.response.FoodListResponse
+import com.alwan.core.data.remote.response.SendCommentResponse
 import com.alwan.core.data.util.NetworkOnlyResource
 import com.alwan.core.data.util.NetworkResult
 import com.alwan.core.data.util.Resource
@@ -14,7 +15,6 @@ import com.alwan.core.domain.model.Food
 import com.alwan.core.domain.model.FoodDetail
 import com.alwan.core.domain.repository.RestaurantRepository
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.asFlow
 import javax.inject.Inject
 
 class RestaurantRepositoryImpl @Inject constructor(
@@ -30,7 +30,7 @@ class RestaurantRepositoryImpl @Inject constructor(
                 restaurantRemoteDataSource.getRestaurantListByCategory(category)
         }.asFlow()
 
-    override fun getRestaurantDetailsByID(restaurantId: String): Flow<Resource<FoodDetail>> =
+    override fun getRestaurantDetailsByID(restaurantId: Int): Flow<Resource<FoodDetail>> =
         object : NetworkOnlyResource<FoodDetail, FoodDetailResponse>() {
             override suspend fun loadFromNetwork(data: FoodDetailResponse): Flow<FoodDetail> =
                 restaurantMapper.mapFoodDetailResponseToFoodDetail(data)
@@ -40,7 +40,7 @@ class RestaurantRepositoryImpl @Inject constructor(
         }.asFlow()
 
     override fun getCommentsByRestaurantID(
-        restaurantId: String,
+        restaurantId: Int,
         page: Int
     ): Flow<Resource<List<Comment>>> =
         object : NetworkOnlyResource<List<Comment>, CommentListResponse>() {
@@ -51,7 +51,12 @@ class RestaurantRepositoryImpl @Inject constructor(
                 restaurantRemoteDataSource.getCommentsByRestaurantID(restaurantId, page)
         }.asFlow()
 
-//    override fun sendCommentToRestaurantByID(commentRequest: CommentRequest): Flow<Resource<Boolean>> {
-//        TODO("Not yet implemented")
-//    }
+    override fun sendCommentToRestaurantByID(sendCommentRequest: SendCommentRequest): Flow<Resource<String>> =
+        object : NetworkOnlyResource<String, SendCommentResponse>() {
+            override suspend fun loadFromNetwork(data: SendCommentResponse): Flow<String> =
+                restaurantMapper.mapSendCommentResponseToString(data)
+
+            override suspend fun createCall(): Flow<NetworkResult<SendCommentResponse>> =
+                restaurantRemoteDataSource.sendCommentToRestaurantByID(sendCommentRequest)
+        }.asFlow()
 }

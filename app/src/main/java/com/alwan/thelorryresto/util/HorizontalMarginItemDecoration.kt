@@ -4,7 +4,7 @@ import android.graphics.Rect
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 
-class VerticalMarginItemDecoration(private val height: Int, private val width: Int = 0) :
+class HorizontalMarginItemDecoration(private val height: Int = 0, private val width: Int) :
     RecyclerView.ItemDecoration() {
     override fun getItemOffsets(
         outRect: Rect, view: View,
@@ -12,10 +12,14 @@ class VerticalMarginItemDecoration(private val height: Int, private val width: I
     ) {
         with(outRect) {
             if (parent.getChildAdapterPosition(view) == 0)
-                top = height
+                left = width * 2
+            right =
+                if (parent.getChildAdapterPosition(view) == parent.adapter?.itemCount?.minus(1))
+                    width * 2
+                else
+                    width
+            top = height
             bottom = height
-            left = width
-            right = width
         }
     }
 }
