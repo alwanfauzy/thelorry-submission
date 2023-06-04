@@ -13,7 +13,7 @@
         android:paddingHorizontal="@dimen/spacing_14dp"
         android:paddingVertical="@dimen/spacing_18dp">
 
-        <androidx.appcompat.widget.AppCompatImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/ivComment"
             android:layout_width="@dimen/spacing_40dp"
             android:layout_height="@dimen/spacing_40dp"
